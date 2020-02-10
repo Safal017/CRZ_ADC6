@@ -4,8 +4,8 @@
     {% block content %}
     
     <h1>Teachers Information</h1>
-    <a href="/app/teacherform/">Add teacher</a> <br>
-   
+    <a href="/app/teacherform/">Add teacherform</a> <br>
+    <a href="/app/searchteacher/">Search</a> <br>
     {% for teachers in teacher %}
     Teacher's First Name : {{teachers.first_name}} <br>
     Teacher's Last Name : {{teachers.last_name}} <br>
@@ -14,16 +14,11 @@
     Teacher's subject : {{teachers.subject}}<br>
     
     <a href="edit/{{teachers.id}}">Edit this</a> <br>
-  
+    <a href="delete/{{teachers.id}}">Delete</a> <br>
     
 
     {% empty %}
-    There are no teacher available.
-    
-    {% endfor %}
+    There are no teacher.
 
- 
-
-
-    
-{%endblock%}
+{% endfor %}
+{% endblock %}
