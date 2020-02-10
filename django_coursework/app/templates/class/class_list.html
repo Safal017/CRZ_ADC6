@@ -1,28 +1,24 @@
 {% extends 'base/base.html' %}
-    {% load static %}
+{% load static %}
 
-    {% block content %}
-    
+{% block content %}
 
-    <h1>Class_Information</h1>
-    
-    <a href="/app/classform/">Add Class</a> <br>
-    
-  
-    {% for classes in class %}
-    Class Code : {{classes.code}} <br>
-    Class Name : {{classes.class_name}} <br>
-    Class Type : {{classes.class_type}} <br>
 
-  
-    <a href="edit/{{classes.id}}">Edit this</a> <br>
-   
-   
-    
+<h1>Class_Information</h1>
+<a href="/app/classform/">Add Class</a> <br>
+<a href="/app/searchclass/">Search</a> <br>
+{% for classes in class %}
+Class Code : {{classes.code}} <br>
+Class Name : {{classes.class_name}} <br>
+Class Type : {{classes.class_type}} <br>
 
-    {% empty %}
-    There are no students available.
-    
-    {% endfor %}
+<a href="edit/{{classes.id}}">Edit this</a> <br>
+<a href="delete/{{classes.id}}">Delete</a> <br>
 
- {% endblock %}
+
+{% empty %}
+There is no class.
+
+{% endfor %}
+
+{% endblock %}

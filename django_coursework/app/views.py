@@ -53,6 +53,12 @@ def view_student_update_form_data_in_db(request,ID):
     students_obj.save()
     return redirect('/app/studentlist/')
 
+def deletestudent(request, ID):
+    studentobj = Student.objects.get(id=ID)
+    studentobj.delete()
+    return redirect('/app/studentlist/')
+
+
 
 
 def view_teacher_lists(request):
@@ -102,6 +108,12 @@ def view_teacher_update_form_data_in_db(request,ID):
     teacher_obj.save()
     return redirect('/app/teacherlist/')
 
+def deleteteacher(request, ID):
+    teacherobj = Teacher.objects.get(id=ID)
+    teacherobj.delete()
+    return redirect('/app/teacherlist/')
+
+
 
 def view_subject_lists(request):
     list_of_subject= Subject.objects.all()
@@ -148,6 +160,10 @@ def view_subject_update_form_data_in_db(request,ID):
     subject.save()
     return redirect('/app/subjectlist/')
 
+def deletesubject(request, ID):
+    subject = Subject.objects.get(id=ID)
+    subject.delete()
+    return redirect('/app/subjectlist/')
 
 def view_class_lists(request):
     list_of_class= Class.objects.all()
@@ -193,6 +209,13 @@ def view_class_update_form_data_in_db(request,ID):
     class_obj.class_type = request.POST['class_type']
     class_obj.save()
     return redirect('/app/classlist/')
+
+def deletetclass(request, ID):
+    class_obj = Class.objects.get(id=ID)
+    class_obj.delete()
+    return redirect('/app/classlist/')
+
+
 
 def view_parent_lists(request):
     list_of_parent= Parents.objects.all()
@@ -240,6 +263,14 @@ def view_parent_update_form_data_in_db(request,ID):
     parent_obj.address = request.POST['address']
     parent_obj.save()
     return redirect('/app/parentlist/')
+
+def deleteparent(request, ID):
+    parent_obj = Parents.objects.get(id=ID)
+    parent_obj.delete()
+    return redirect('/app/parentlist/')
+
+
+
 
 
 def view_result_lists(request):
@@ -292,4 +323,9 @@ def view_result_update_form_data_in_db(request,ID):
     result_obj.marks_obtained = request.POST['marks_obtained']
 
     result_obj.save()
+    return redirect('/app/resultlist/')
+
+def deleteresult(request, ID):
+    result_obj = Result.objects.get(id=ID)
+    result_obj.delete()
     return redirect('/app/resultlist/')

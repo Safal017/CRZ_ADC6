@@ -4,21 +4,24 @@
 {% block content %}
        
         <h1>Students Information</h1>
+    
             <a href="/app/studentform/">Add Student</a> <br>
-           
+   
+            <a href="/app/searchstudent/">Search</a> <br>
             {% for students in student %}
             Student's First Name : {{students.first_name}} <br>
             Student's Last Name : {{students.last_name}} <br>
             Student's Phone Number : {{students.phone_no}}<br>
             Student's Address : {{students.address}}<br>
 
+           
     <a href="edit/{{students.id}}">Edit this</a> <br>
-   
+    <a href="delete/{{students.id}}">Delete</a> <br>
     
- 
+  
 
     {% empty %}
-    There are no students available.
+    There are no students.
     
     {% endfor %}
     {% endblock %}
