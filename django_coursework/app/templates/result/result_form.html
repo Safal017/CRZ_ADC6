@@ -173,72 +173,83 @@
       </div>
     </div>
     </nav>
-    <form method="POST" action="update/{{classes.id}}">
-        {% csrf_token %}
-        Class Code :<input name="code" type="text" value ={{classes.code}}> <br>
-        Class Name  : <input name="class_name" type="text"  value={{classes.class_name}}> <br>
-        Class Type : <input name="class_type" type="text" value={{classes.class_type}}> <br>
-        <input type="submit">
-    </form>
-</body>
 
+  <div class="Studentform">
+   <form method="POST" action="save">
+        {% csrf_token %}
+        Enter Student ID: <input name="student_id" type="text" > <br>
+        Enter Student Name: <input name="student_name" type="text" > <br>
+        Enter Subject Code: <input name="subject_code" type="text" > <br>
+        Enter Subject Name: <input name="subject_name" type="text" > <br> 
+        Enter Teacher Name: <input name="teacher_name" type="text" > <br> 
+        Enter Marks Obtained: <input name="marks_obtained" type="text" > <br> 
+        <input type="submit">
+    
+      </form>
+
+     </div>
+</body>
 <footer class="ftco-footer ftco-bg-dark ftco-section">
   
       
-  <div class="block-21 mb-5 d-flex">
-    <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-    <div class="text">
-      <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-      <div class="meta">
-        <div><a href="#"><span class="icon-calendar"></span> Dec 25, 2018</a></div>
-        <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-        <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+          <div class="block-21 mb-5 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> Dec 25, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="ftco-footer-widget mb-5 ml-md-4">
+          <h2 class="ftco-heading-2">Links</h2>
+          <ul class="list-unstyled">
+            <li class="nav-item active"><a href="/app/home/" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item"><a href= "/app/studentlist/"   class="nav-link">Students</a></li>
+	        	<li class="nav-item"><a href="/app/teacherlist/"   class="nav-link">Teachers</a></li>
+	        	<li class="nav-item"><a href="/app/subjectlist/"   class="nav-link">Subjects</a></li>
+	        	<li class="nav-item"><a href="/app/classlist/"     class="nav-link">Class</a></li>
+            <li class="nav-item"><a href="/app/parentlist/"   class="nav-link">Parents</a></li>
+            <li class="nav-item"><a href="/app/resultlist/"   class="nav-link">Results</a></li>
+            <li class="nav-item"><a href="/app/upload/"      class="nav-link">Upload</a></li>
+            <li class="nav-item"><a href="/accounts/logout/" class="nav-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="ftco-footer-widget mb-5">
+            <h2 class="ftco-heading-2">Subscribe Us!</h2>
+          <form action="#" class="subscribe-form">
+            <div class="form-group">
+              <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
+              <input type="submit" value="Subscribe" class="form-control submit px-3">
+            </div>
+          </form>
+        </div>
+        <div class="ftco-footer-widget mb-5">
+            <h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
+            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="icon-heart" aria-hidden="true"></i> 
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
       </div>
     </div>
   </div>
-</div>
-</div>
-<div class="col-md-6 col-lg-3">
-<div class="ftco-footer-widget mb-5 ml-md-4">
-  <h2 class="ftco-heading-2">Links</h2>
-  <ul class="list-unstyled">
-    <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-    <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-    <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-    <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Deparments</a></li>
-    <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
-  </ul>
-</div>
-</div>
-<div class="col-md-6 col-lg-3">
-<div class="ftco-footer-widget mb-5">
-    <h2 class="ftco-heading-2">Subscribe Us!</h2>
-  <form action="#" class="subscribe-form">
-    <div class="form-group">
-      <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-      <input type="submit" value="Subscribe" class="form-control submit px-3">
-    </div>
-  </form>
-</div>
-<div class="ftco-footer-widget mb-5">
-    <h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
-    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-  </ul>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-md-12 text-center">
-
-<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="icon-heart" aria-hidden="true"></i> 
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-</div>
-</div>
-</div>
 </footer>
 
 
@@ -262,7 +273,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script src="{% static 'js/google-map.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-
+ 
 
 
 
