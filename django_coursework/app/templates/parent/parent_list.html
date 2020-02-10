@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+    {% load static %}
+
+    {% block content %}
+    
+    <h1>Students Information</h1>
+    {% if request.user.is_superuser %}
+    <a href="/app/parentform/">Add Parent</a> <br>
+    {% endif %}
+    <a href="/app/searchparent/">Search</a> <br>
+    {% for parents in parent %}
+    Parent's First Name : {{parents.first_name}} <br>
+    Parent's Last Name : {{parents.last_name}} <br>
+    Parent's Phone Number : {{parents.phone_no}}<br>
+    Parent's Address : {{parents.address}}<br>
+
+    {% if request.user.is_superuser %}
+    <a href="edit/{{parents.id}}">Edit this</a> <br>
+    <a href="delete/{{parents.id}}">Delete</a> <br>
+    {% endif %}
+    
+
+    {% empty %}
+    There are no students available.
+    
+    {% endfor %}
+
+
+    {% endblock %}

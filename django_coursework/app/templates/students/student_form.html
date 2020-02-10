@@ -173,15 +173,20 @@
       </div>
     </div>
     </nav>
-    <form method="POST" action="update/{{classes.id}}">
+  <div class="Studentform">
+   <form method="POST" action="save">
         {% csrf_token %}
-        Class Code :<input name="code" type="text" value ={{classes.code}}> <br>
-        Class Name  : <input name="class_name" type="text"  value={{classes.class_name}}> <br>
-        Class Type : <input name="class_type" type="text" value={{classes.class_type}}> <br>
+        Enter First Name: <input name="first_name" type="text" > <br>
+        Enter Last Name: <input name="last_name" type="text" > <br>
+        Enter Phone Number: <input name="phone_no" type="text" > <br>
+        Enter Address: <input name="address" type="text" > <br> 
+        <br>      
         <input type="submit">
-    </form>
-</body>
+    
+      </form>
 
+     </div>
+</body>
 <footer class="ftco-footer ftco-bg-dark ftco-section">
   
       
