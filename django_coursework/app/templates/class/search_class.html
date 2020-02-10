@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Kiddos </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+     <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %} "> 
+    <style>
+        body {
+            background-color: lightblue;
+          }
+
+        input[type=text], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+        
+        input[type=submit] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+        
+        div {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+        </style>
+
+    
+  </head>
+  <body>
+     
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+        <div class="container d-flex align-items-center">
+            <a class="navbar-brand" href="{% static 'index.html' % }">Kiddos</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="/app/home/" class="nav-link pl-0">Home</a></li>
+                <li class="nav-item"><a href= "/app/studentlist/"   class="nav-link">Students</a></li>
+                <li class="nav-item"><a href="/app/teacherlist/"   class="nav-link">Teachers</a></li>
+                <li class="nav-item"><a href="/app/subjectlist/"   class="nav-link">Subjects</a></li>
+                <li class="nav-item"><a href="/app/classlist/"     class="nav-link">Class</a></li>
+            <li class="nav-item"><a href="/app/parentlist/"   class="nav-link">Parents</a></li>
+            <li class="nav-item"><a href="/app/resultlist/"   class="nav-link">Results</a></li>
+            <li class="nav-item"><a href="/app/upload/"      class="nav-link">Upload</a></li>
+            <li class="nav-item"><a href="/accounts/logout/" class="nav-link">Logout</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+
+
+<body>
+    <div class="container">
+        <h1>Search Class Information</h1>
+        <h2>Type class you are searching for</h2>
+        <form method="post" action="/app/searchclass/">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class=col-lg-5>
+                <input type="text" name="search" class="form-control" placeholder="Enter Code or Class Name">
+            </div>
+            <label class="col-lg-2">
+                <input type="submit" >Search</button>
+            </label>
+        </form>
+    </div>
+
+    <div>
+        {% if searchclass %}
+            {% for c in searchclass %}
+            <tr>
+             <td>Class Code :</td>  
+                <td>{{c.code}}</td> 
+            </tr>
+            <br>
+            <tr>
+                <td>Class Name:</td>
+                <td>{{c.class_name}}</td>
+            </tr>
+            <br>
+            <tr>
+                <td>Class Type :</td>
+                <td>{{c.class_type}}</td>
+            </tr>
+        
+        </table>
+        <hr>
+            {% endfor %}
+        {% endif%}
+    </div>
+
+
+</body>
+<p>
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="icon-heart" aria-hidden="true"></i> 
+  </p>
+</html>

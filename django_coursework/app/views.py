@@ -1,13 +1,14 @@
-from django.shortcuts import render
-
+from django.shortcuts import *
+from django.db.models import *
 # Create your views here.
 from django.shortcuts import *
 from django.http import HttpResponse
 from .models import *
 
+
 def view_home_page(request):
-        return render(request,'index.html')
-        
+    return render(request,'index.html')
+
 def view_students_lists(request):
     list_of_students= Student.objects.all()
 
@@ -57,6 +58,26 @@ def deletestudent(request, ID):
     studentobj = Student.objects.get(id=ID)
     studentobj.delete()
     return redirect('/app/studentlist/')
+
+
+def search(request):
+    if request.method=='POST':
+        srch = request.POST['search']
+
+        if srch:
+            match = Student.objects.filter(
+                Q(first_name__icontains=srch) | Q(address__icontains=srch)
+                )
+
+            if match:
+                return render(request,'students/search_student.html', {'src':match})
+
+            else:
+                return HttpResponse('Result Not Found')
+        else:
+            return HttpResponseRedirect('/app/searchstudent/')
+
+    return render(request,'students/search_student.html')
 
 
 
@@ -113,6 +134,25 @@ def deleteteacher(request, ID):
     teacherobj.delete()
     return redirect('/app/teacherlist/')
 
+def searchteacher(request):
+    if request.method=='POST':
+        srch = request.POST['search']
+
+        if srch:
+            match = Teacher.objects.filter(
+                Q(first_name__icontains=srch) | Q(email__icontains=srch)
+                )
+
+            if match:
+                return render(request,'teacher/search_teacher.html', {'srct':match})
+
+            else:
+                return HttpResponse('Result Not Found')
+        else:
+            return HttpResponseRedirect('/app/searchteacher/')
+
+    return render(request,'teacher/search_teacher.html')
+
 
 
 def view_subject_lists(request):
@@ -165,6 +205,28 @@ def deletesubject(request, ID):
     subject.delete()
     return redirect('/app/subjectlist/')
 
+def searchsubject(request):
+    if request.method=='POST':
+        srch = request.POST['search']
+
+        if srch:
+            match = Subject.objects.filter(
+                Q(code__icontains=srch) 
+                )
+
+            if match:
+                return render(request,'subject/search_subject.html', {'searchsubject':match})
+
+            else:
+                return HttpResponse('Result Not Found')
+        else:
+            return HttpResponseRedirect('/app/searchsubject/')
+
+    return render(request,'subject/search_subject.html')
+
+
+
+
 def view_class_lists(request):
     list_of_class= Class.objects.all()
 
@@ -215,7 +277,24 @@ def deletetclass(request, ID):
     class_obj.delete()
     return redirect('/app/classlist/')
 
+def searchclass(request):
+    if request.method=='POST':
+        srch = request.POST['search']
 
+        if srch:
+            match = Class.objects.filter(
+                Q(code__icontains=srch) | Q(class_name__icontains=srch)
+                )
+
+            if match:
+                return render(request,'class/search_class.html', {'searchclass':match})
+
+            else:
+                return HttpResponse('Result Not Found')
+        else:
+            return HttpResponseRedirect('/app/searchclass')
+
+    return render(request,'class/search_class.html')
 
 def view_parent_lists(request):
     list_of_parent= Parents.objects.all()
@@ -270,6 +349,24 @@ def deleteparent(request, ID):
     return redirect('/app/parentlist/')
 
 
+def parentsearch(request):
+    if request.method=='POST':
+        srch = request.POST['search']
+
+        if srch:
+            match = Parents.objects.filter(
+                Q(first_name__icontains=srch) | Q(address__icontains=srch)
+                )
+
+            if match:
+                return render(request,'parent/search_parent.html', {'searchparent':match})
+
+            else:
+                return HttpResponse('Result Not Found')
+        else:
+            return HttpResponseRedirect('/app/searchparent/')
+
+    return render(request,'parent/search_parent.html')
 
 
 
@@ -329,3 +426,23 @@ def deleteresult(request, ID):
     result_obj = Result.objects.get(id=ID)
     result_obj.delete()
     return redirect('/app/resultlist/')
+
+
+def resultsearch(request):
+    if request.method=='POST':
+        srch = request.POST['search']
+
+        if srch:
+            match = Result.objects.filter(
+                Q(student_id__icontains=srch) | Q(student_name__icontains=srch)
+                )
+
+            if match:
+                return render(request,'result/search_result.html', {'srchres':match})
+
+            else:
+                return HttpResponse('Result Not Found')
+        else:
+            return HttpResponseRedirect('/app/searchresult/')
+
+    return render(request,'result/search_result.html')
