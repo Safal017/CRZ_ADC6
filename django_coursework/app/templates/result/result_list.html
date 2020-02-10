@@ -5,7 +5,7 @@
     
     <h1>View Result</h1>
     <a href="/app/resultform/">Add Result</a> <br>
-    <a href="/app/searchresult/">Search</a> <br>
+    
 
     {% for results in result %}
     Student ID: {{results.student_id}} <br>
@@ -15,7 +15,7 @@
     Teacher Name : {{results.teacher_name}}<br>
     Marks Obtained : {{results.marks_obtained}}<br>
     <a href="edit/{{results.id}}">Edit this</a> <br>
-    <a href="delete/{{results.id}}">Delete</a> <br>
+ 
     {% empty %}
 
     There are no result.
