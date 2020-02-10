@@ -4,7 +4,7 @@ from django.db.models import *
 from django.shortcuts import *
 from django.http import HttpResponse
 from .models import *
-
+from .forms import Assignment_list
 
 def view_home_page(request):
     return render(request,'index.html')
@@ -446,3 +446,30 @@ def resultsearch(request):
             return HttpResponseRedirect('/app/searchresult/')
 
     return render(request,'result/search_result.html')
+
+
+
+def upload_assignment(request):
+    if request.method=="POST":
+        form = Assignment_list(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/app/upload/assignment/')
+    else:
+        form=Assignment_list()
+    return render(request, 'uploadassignment/upload_assignment.html', {
+        'form':form
+    })
+
+
+def assignment_list(request):
+    assignments= Assignment.objects.all()
+    return render(request,'uploadassignment/assignment_list.html',{
+        'assignments': assignments
+    })
+    
+def delete_assignment(request, ID):
+    if request.method == 'POST':
+        assignment = Assignment.objects.get(id=ID)
+        assignment.delete()
+    return redirect('/app/upload/assignment/')

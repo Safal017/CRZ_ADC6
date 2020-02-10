@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+    {% load static %}
+
+    {% block content %}
+       <h1>Assignments</h1>
+    <p>
+      <a href="/app/upload/" class="btn btn-primary btn-sn">Upload Assignments</a>
+    </p>
+
+  <table class="table">
+    <thead>
+      <tr> 
+        <th>Student Name</th>
+        <th>Document Name</th>
+        <th>Coursework Title</th>
+        <th>Download</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for assignment in assignments %}
+        <tr>
+          <td>{{ assignment.student_name }}</td>
+          <td>{{ assignment.document_name }}</td>
+          <td>{{ assignment.coursework_title }}</td>
+          <td>
+            <a href='{{ assignment.pdf.url }}'class="btn btn-primary btn-sn">Download PDF</a>
+            {{ assignment.pdf }}
+          </td>
+          <td>
+            <form method="post" action='/app/delete_assignment/{{assignment.id}}'>
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+      
+  
+          </td>
+            </tr>
+            {% endfor %}
+  </tbody>
+  </table>
+{%endblock%}
