@@ -1,7 +1,5 @@
 from django.shortcuts import *
 from django.db.models import *
-# Create your views here.
-from django.shortcuts import *
 from django.http import HttpResponse
 from .models import *
 from .forms import Assignment_list

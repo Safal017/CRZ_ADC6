@@ -1,3 +1,5 @@
+from django.db import models
+
 # Create your models here.
 from django.db import models
 
@@ -11,7 +13,8 @@ class Teacher(models.Model):
     def __str__(self): 
         return f"{self.first_name} {self.last_name} {self.email} {self.address} {self.subject}"
 
-   
+    def is_valid_teacher(self):
+        return (self.first_name!=self.last_name)
 
 # Create your models here.
 class Student(models.Model):
@@ -28,7 +31,9 @@ class Student(models.Model):
 
  
 
-  
+    def is_valid_student(self):
+        return (self.first_name !=self.last_name)and (self.phone_no != 0)
+
 class Subject(models.Model):
     code =  models.CharField(max_length=50)
     name = models.CharField(max_length=50)
@@ -49,7 +54,8 @@ class Class(models.Model):
     def __str__(self):
         return f"{self.code}{self.class_type}{self.class_name}"
 
-  
+    def is_valid_class(self):
+        return (self.code !=self.student)
 
 class Parents(models.Model):
     first_name = models.CharField(max_length=50)
@@ -61,4 +67,6 @@ class Parents(models.Model):
     def __str__(self):
         return f"{self.first_name} , {self.last_name}, {self.address} " 
 
-    
+    def is_valid_parents(self):
+        return (self.first_name !=self.last_name)
+
