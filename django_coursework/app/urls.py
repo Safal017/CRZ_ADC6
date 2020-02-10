@@ -50,5 +50,8 @@ urlpatterns = [
     path('upload/',upload_assignment),
     path('upload/assignment/',assignment_list),
     path('delete_assignment/<int:ID>',delete_assignment),
-    
+    path('signup/',view_register_user),
+    path('login/',view_authenticate_user), 
+    path('logout/',view_logout),
+    path('authfailed/',view_authfailed_page),
 ]
