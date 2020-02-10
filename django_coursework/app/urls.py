@@ -47,5 +47,8 @@ urlpatterns = [
     path('resultlist/edit/update/<int:ID>',view_result_update_form_data_in_db),
     path('resultlist/delete/<int:ID>',deleteresult),
     path('searchresult/',resultsearch),
+    path('upload/',upload_assignment),
+    path('upload/assignment/',assignment_list),
+    path('delete_assignment/<int:ID>',delete_assignment),
     
 ]

@@ -68,3 +68,10 @@ class Result(models.Model):
     def __str__(self):
         return f"{self.student_name} , {self.teacher_name}, {self.subject_code} " 
 
+class Assignment(models.Model):
+    student_name = models.CharField(max_length=100, null=True, blank=True)
+    document_name =models.CharField(max_length=100, null=True, blank=True)
+    coursework_title = models.CharField(max_length=100, null=True, blank=True)
+    pdf = models.FileField(upload_to='books/pdfs/')
+    cover = models.ImageField(upload_to='books/covers/', null=True, blank=True)
+

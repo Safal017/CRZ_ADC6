@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+    {% load static %}
+
+    {% block content %}
+
+<h1> Upload Assigment</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-primary">Upload Assigment</button>
+</form>
+
+
+{% endblock %}
