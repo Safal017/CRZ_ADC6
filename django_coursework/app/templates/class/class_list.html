@@ -5,19 +5,19 @@
     
 
     <h1>Class_Information</h1>
-    {% if request.user.is_superuser %}
+    
     <a href="/app/classform/">Add Class</a> <br>
-    {% endif %}
-    <a href="/app/searchclass/">Search</a> <br>
+    
+  
     {% for classes in class %}
     Class Code : {{classes.code}} <br>
     Class Name : {{classes.class_name}} <br>
     Class Type : {{classes.class_type}} <br>
 
-    {% if request.user.is_superuser %}
+  
     <a href="edit/{{classes.id}}">Edit this</a> <br>
-    <a href="delete/{{classes.id}}">Delete</a> <br>
-    {% endif %}
+   
+   
     
 
     {% empty %}
