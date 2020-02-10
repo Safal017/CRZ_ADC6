@@ -4,7 +4,9 @@
     {% block content %}
     
     <h1>Teachers Information</h1>
+    {% if request.user.is_superuser %}
     <a href="/app/teacherform/">Add teacherform</a> <br>
+    {% endif %}
     <a href="/app/searchteacher/">Search</a> <br>
     {% for teachers in teacher %}
     Teacher's First Name : {{teachers.first_name}} <br>
@@ -12,9 +14,10 @@
     Teacher's Email : {{teachers.email}}<br>
     Teacher's address : {{teachers.address}}<br>
     Teacher's subject : {{teachers.subject}}<br>
-    
+    {% if request.user.is_superuser %}
     <a href="edit/{{teachers.id}}">Edit this</a> <br>
     <a href="delete/{{teachers.id}}">Delete</a> <br>
+    {% endif %}
     
 
     {% empty %}

@@ -11,6 +11,8 @@ from app import views
 urlpatterns = [
     path('admin/',admin.site.urls),
     path('app/',include('app.urls')),
+    path('modelapp/',include('modelapp.urls')),
+    path('api/',include('restapi.urls')),
 
 ]
 urlpatterns += [
@@ -23,4 +25,8 @@ urlpatterns += [
     # path('accounts/',include('django.contrib.auth.urls')),
     path('accounts/logout/',view_logout)
     # path('accounts/',include('django.contrib.auth.urls')),
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

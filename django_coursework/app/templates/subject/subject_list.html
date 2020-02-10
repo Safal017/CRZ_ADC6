@@ -4,15 +4,18 @@
     {% block content %}
     
     <h1>Subject Information</h1>
+    {% if request.user.is_superuser %}
     <a href="/app/subjectform/">Add Subject</a> <br>
+    {% endif %}
     <a href="/app/searchsubject/">Search</a> <br>
     {% for subjects in subject %}
     Subject's Code : {{subjects.code}} <br>
     Subject's : {{subjects.name}} <br>
     Class Name: {{subjects.class_name}} <br>
-
+    {% if request.user.is_superuser %}
     <a href="edit/{{subjects.id}}">Edit this</a> <br>
     <a href="delete/{{subjects.id}}">Delete</a> <br>
+    {% endif %}
     
 
     {% empty %}

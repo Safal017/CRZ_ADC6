@@ -4,9 +4,9 @@
 {% block content %}
        
         <h1>Students Information</h1>
-    
+        {% if request.user.is_superuser %}
             <a href="/app/studentform/">Add Student</a> <br>
-   
+            {% endif %}
             <a href="/app/searchstudent/">Search</a> <br>
             {% for students in student %}
             Student's First Name : {{students.first_name}} <br>
@@ -14,10 +14,10 @@
             Student's Phone Number : {{students.phone_no}}<br>
             Student's Address : {{students.address}}<br>
 
-           
+            {% if request.user.is_superuser %}   
     <a href="edit/{{students.id}}">Edit this</a> <br>
     <a href="delete/{{students.id}}">Delete</a> <br>
-    
+    {% endif %}
   
 
     {% empty %}
