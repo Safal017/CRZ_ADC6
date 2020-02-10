@@ -5,10 +5,16 @@ from django.shortcuts import *
 from django.http import HttpResponse
 from .models import *
 from .forms import Assignment_list
+from django.contrib.auth import *
+from django.contrib.auth.models import *
 
 def view_home_page(request):
-    return render(request,'index.html')
+    if request.user.is_authenticated:
+        return render(request,'index.html')
 
+    else:
+        return redirect('/accounts/login/')
+ 
 def view_students_lists(request):
     list_of_students= Student.objects.all()
 
@@ -473,3 +479,33 @@ def delete_assignment(request, ID):
         assignment = Assignment.objects.get(id=ID)
         assignment.delete()
     return redirect('/app/upload/assignment/')
+
+def view_authfailed_page(request):
+    return render(request,'auth/authfailed.html')
+
+def view_register_user(request):
+    if request.method =="GET":
+        return render(request,'auth/register.html')
+    else:
+        print(request.POST)
+        user = User.objects.create_user(username=request.POST['input_username'],password=request.POST['input_password'],email=request.POST['input_email'])
+        user.save()
+        return redirect('/accounts/login')
+
+
+def view_authenticate_user(request):
+    if request.method =="GET":
+        return render (request,'auth/login.html')
+    else:
+        print(request.POST)
+        user = authenticate(username=request.POST['input_username'],password=request.POST['input_password'])
+        print(user)
+        if user is not None:
+            login(request,user)
+            return render(request,'index.html')
+        else:
+            return redirect('/app/authfailed/')
+
+def view_logout(request):
+    logout(request)
+    return redirect('/accounts/login/')
